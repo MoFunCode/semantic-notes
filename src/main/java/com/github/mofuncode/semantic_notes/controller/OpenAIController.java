@@ -4,9 +4,7 @@ import com.github.mofuncode.semantic_notes.service.OpenAIService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j // for logging
 @RestController
@@ -25,5 +23,14 @@ public class OpenAIController {
         Object models = openAIService.listModels();
         return ResponseEntity.ok(models);
     }
-
+    /**
+     * Get a specific OpenAI model by ID
+     * GET /api/openai/models/gpt-4
+     */
+    @GetMapping("/models/{modelId}")
+    public ResponseEntity<Object> getModelById(@PathVariable String modelId) {
+        log.info("Fetching model: {}", modelId);
+        Object model = openAIService.getModel(modelId);
+        return ResponseEntity.ok(model);
+    }
 }
