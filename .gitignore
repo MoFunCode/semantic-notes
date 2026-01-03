@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Mardown Files ###
+*.md
+
 ### STS ###
 .apt_generated
 .classpath
@@ -34,3 +37,5 @@ build/
 
 ### Application config ###
 src/main/resources/application.properties
+
+
